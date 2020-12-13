@@ -1,0 +1,42 @@
+﻿@page
+@model Novels.Pages.NovelAuthorPages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Novel Authors</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NovelAuthor[0].Authors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NovelAuthor[0].Novels)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.NovelAuthor) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Authors.AuthorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Novels.NovelId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.NovelAuthorId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.NovelAuthorId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.NovelAuthorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

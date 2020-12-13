@@ -1,0 +1,40 @@
+﻿@page
+@model Novels.Pages.NovelAuthorPages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>NovelAuthor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NovelAuthor.NovelAuthorId" />
+            <div class="form-group">
+                <label asp-for="NovelAuthor.AuthorId" class="control-label"></label>
+                <select asp-for="NovelAuthor.AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
+                <span asp-validation-for="NovelAuthor.AuthorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NovelAuthor.NovelId" class="control-label"></label>
+                <select asp-for="NovelAuthor.NovelId" class="form-control" asp-items="ViewBag.NovelId"></select>
+                <span asp-validation-for="NovelAuthor.NovelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
