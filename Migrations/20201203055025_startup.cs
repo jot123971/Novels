@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Novels.Migrations
@@ -109,6 +110,9 @@ namespace Novels.Migrations
                 name: "IX_NovelAuthor_NovelId",
                 table: "NovelAuthor",
                 column: "NovelId");
+            var sqlFile = Path.Combine(".\\MyNovelsSchemaAndData", @"MyNovels.sql");
+
+            migrationBuilder.Sql(File.ReadAllText(sqlFile));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
